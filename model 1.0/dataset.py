@@ -1,6 +1,6 @@
 import pandas as pd
 import requests
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import numpy as np
 
 train_data_fraction = 0.75
