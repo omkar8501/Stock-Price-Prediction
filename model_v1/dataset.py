@@ -1,9 +1,10 @@
 import pandas as pd
 import requests
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 
-train_data_fraction = 0.75
+train_data_fraction = 0.8
+scaler = MinMaxScaler()
 
 
 def get_data(stock_symbol, start_date, end_date):
@@ -28,8 +29,12 @@ def change_index(dataframe):
     return dataframe
 
 
-def create_test_train_dataset(dataframe):
-    data_scaled = MinMaxScaler().fit_transform(dataframe)
+def get_scaled_data(dataframe):
+    data_scaled = scaler.fit_transform(dataframe)
+    return data_scaled
+
+
+def create_test_train_dataset(data_scaled):
     train_length = int(len(data_scaled) * train_data_fraction)
     train_data = data_scaled[0:train_length, :]
     test_data = data_scaled[train_length:len(data_scaled), :]
