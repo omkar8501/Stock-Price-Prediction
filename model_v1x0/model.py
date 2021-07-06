@@ -1,4 +1,4 @@
-from model_v1 import dataset
+from model_v1x0 import dataset
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
 
@@ -13,7 +13,7 @@ model = Sequential()
 model.add(LSTM(256, input_shape=(1, 1)))
 model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
-model.fit(x_train, y_train, epochs=150, verbose=1, batch_size=1)
+model.fit(x_train, y_train, epochs=100000, verbose=1, batch_size=500)
 score = model.evaluate(x_train, y_train, verbose=0)
 
 train_prediction = model.predict(x_train)

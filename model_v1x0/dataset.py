@@ -3,7 +3,7 @@ import requests
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
 
-train_data_fraction = 0.8
+train_data_fraction = 0.95
 scaler = MinMaxScaler()
 
 

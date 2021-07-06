@@ -1,5 +1,5 @@
-from model_v1 import model
-from model_v1.dataset import scaler
+from model_v1x0 import model
+from model_v1x0.dataset import scaler
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -11,8 +11,9 @@ test_predict_plot = np.empty_like(model.scaled_data)
 test_predict_plot[:, :] = np.nan
 test_predict_plot[len(model.train_prediction) + 3: len(model.scaled_data)-1, :] = model.test_prediction
 
-plt.plot(scaler.inverse_transform(model.scaled_data))
-plt.plot(train_predict_plot)
-plt.plot(test_predict_plot)
+plt.plot(model.netflix.index, scaler.inverse_transform(model.scaled_data), label='historical data')
+plt.plot(model.netflix.index, train_predict_plot, label='training prediction data')
+plt.plot(model.netflix.index, test_predict_plot, label='testing prediction data')
 plt.legend()
+plt.grid()
 plt.show()
