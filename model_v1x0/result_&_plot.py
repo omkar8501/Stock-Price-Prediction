@@ -9,7 +9,7 @@ train_predict_plot[1:len(model.train_prediction) + 1, :] = model.train_predictio
 
 test_predict_plot = np.empty_like(model.scaled_data)
 test_predict_plot[:, :] = np.nan
-test_predict_plot[len(model.train_prediction) + 3: len(model.scaled_data)-1, :] = model.test_prediction
+test_predict_plot[len(model.train_prediction) + 2 + 1: len(model.scaled_data) - 1, :] = model.test_prediction
 
 plt.plot(model.netflix.index, scaler.inverse_transform(model.scaled_data), label='historical data')
 plt.plot(model.netflix.index, train_predict_plot, label='training prediction data')
